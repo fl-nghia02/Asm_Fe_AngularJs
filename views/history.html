@@ -1,0 +1,31 @@
+<div class="container bg-light">
+    <div class="row mt-3" ng-controller="historyCtrl">
+        <div class="mt-3">
+            <h3>Môn học</h3>
+            <select class="form-select" aria-label="Default select example" ng-model="select" ng-change="change()">
+                <option ng-repeat="sub in subjects" value="{{sub.id}}">{{sub.name}}</option>
+            </select>
+            <div class="row text-center">
+                <h3>Điểm cao nhất: {{maxScore}}</h3>
+            </div>
+            <div class="mt-2">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Điểm</th>
+                            <th scope="col">Thời gian thi</th>
+                            <th scope="col">Thời điểm thi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in currentSubjectResult | orderBy : '-startTime' ">
+                            <td>{{x.score}}</td>
+                            <td>{{x.examTime}}s</td>
+                            <td>{{x.startTime}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

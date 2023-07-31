@@ -1,0 +1,47 @@
+<div class="container bg-light">
+    <div class="row mt-3">
+        <div class="col-md-9 "></div>
+            <div ng-controller="homeCtrl">
+                <div class="row m-0 mb-3">
+                    <div ng-repeat="sub in subjects | limitTo : pageSize : eBegin" class="col-md-4 mt-3">
+                        <div class="card" style="width: 18rem; height: 19rem;">
+                            <img ng-click="forwardSubjectId(sub.id)" src="../logos/{{sub.logo}}"
+                                class="card-img-top w-50" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="" class="link-danger" id="linkT"
+                                        ng-click="forwardSubjectId(sub.id)">{{sub.name}}</a>
+                                </h5>
+                                <a href="" ng-click="forwardSubjectId(sub.id)" class="btn btn-primary">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-3">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#home" ng-click="pre()">Previous</a></li>
+                            <li class="page-item"><a class="page-link" ng-bind="page"></a></li>
+                            <li class="page-item"><a class="page-link" href="#home" ng-click="next()">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pe-1 mt-3">
+            <div class="list-group">
+                <small href="" class="list-group-item list-group-item-action" aria-current="true"
+                    style="background-color: rgb(240, 240, 240);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-border-width" viewBox="0 0 16 16">
+                        <path
+                            d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                    </svg> <strong style="font-size: 17px;">Danh mục</strong>
+                </small>
+                <div ng-repeat="sub in subjects">
+                    <a href="#" class="list-group-item list-group-item-action">{{sub.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

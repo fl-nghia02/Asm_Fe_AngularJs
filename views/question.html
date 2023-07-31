@@ -1,0 +1,116 @@
+<div class="container bg-light">
+    <div class="row mt-3" ng-controller="questionCtrl">
+        <div class="mt-3">
+            <h3>Chọn môn học cần chỉnh sửa câu hỏi:</h3>
+            <select class="form-select" aria-label="Default select example" ng-model="data.selected"
+                ng-change="change()">
+                <option ng-repeat="sub in subjects" value="{{sub.id}}">{{sub.name}}</option>
+            </select>
+            <div class="mt-2">
+                <form ng-submit="onFormSubmit($event)">
+                    <label for="recipient-name" class="col-form-label">Nội dung câu hỏi:</label>
+                    <input type="text" class="form-control" id="recipient-name" ng-model="questionContent">
+                    <label for="recipient-name" class="col-form-label">Đáp án 1:</label>
+                    <input type="text" class="form-control" id="recipient-name" ng-model="option1">
+                    <label for="recipient-name" class="col-form-label">Đáp án 2:</label>
+                    <input type="text" class="form-control" id="recipient-name" ng-model="option2">
+                    <label for="recipient-name" class="col-form-label">Đáp án 3:</label>
+                    <input type="text" class="form-control" id="recipient-name" ng-model="option3">
+                    <label for="recipient-name" class="col-form-label">Đáp án 4:</label>
+                    <input type="text" class="form-control" id="recipient-name" ng-model="option4">
+                    <div class="row form-group mt-2"> <label for="form_email">Đáp án đúng:</label>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input ms-2" type="radio" name="answerUse" id="flexRadioDefault1"
+                                value="1" ng-model="answer.selectedOption">
+                            <label class="form-check-label ms-2" for="flexRadioDefault1">
+                                A
+                            </label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input ms-2" type="radio" name="answerUse" id="flexRadioDefault2"
+                                value="2" ng-model="answer.selectedOption">
+                            <label class="form-check-label ms-2" for="flexRadioDefault2">
+                                B
+                            </label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input ms-2" type="radio" name="answerUse" id="flexRadioDefault3"
+                                value="3" ng-model="answer.selectedOption">
+                            <label class="form-check-label ms-2" for="flexRadioDefault3">
+                                C
+                            </label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input ms-2" type="radio" name="answerUse" id="flexRadioDefault4"
+                                value="4" ng-model="answer.selectedOption">
+                            <label class="form-check-label ms-2" for="flexRadioDefault4">
+                                D
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-primary" ng-click="add()"
+                                ng-disabled="disable">Thêm</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-primary" ng-click="edit()"
+                                ng-disabled="!disable">Lưu</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="reset" class="btn btn-primary" ng-click="undisable()">Xóa form</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="">
+                <table class="table mt-4 table-bordered border-dark">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Stt</th>
+                            <th class="text-center">Nội dung câu hỏi</th>
+                            <th colspan="2" class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="sv in currentSubject.quizs">
+                            <td class="text-center">{{ sv.Id }}</td>
+                            <td>{{ sv.Text }}</td>
+                            <td class="text-center">
+                                <button class="btn btn-primary" ng-click="showData(sv.Id)">Sửa</button>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#modal_delete_{{sv.id}}" ng-click="delete(sv.Id)">Xóa</button>
+
+                                <!-- <div ng-show="showModal">
+                                    <div class="modal fade" id="modal_delete_{{sv.id}}" tabindex="-1"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Bạn có chắc chắn muốn xóa không?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="button" ng-click="delete()"
+                                                        class="btn btn-danger">Xóa</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

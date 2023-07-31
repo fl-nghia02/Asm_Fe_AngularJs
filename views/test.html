@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/.../angu.../1.6.9/angular.min.js"></script>
+
+<body ng-app="myapp">
+    <div>
+        <form ng-controller="ngForm">
+            <ul>
+                <li ng-repeat="item in arrayName | limitTo:2:-2">{{item}}</li>
+                <li ng-repeat="item in stringName | limitTo:-5">{{item}}</li>
+                <li>===================================================</li>
+                <li ng-repeat="item in arrayName | orderBy">{{item}}</li>
+                <li>===================================================</li>
+                <li ng-repeat="item in arrayName | orderBy:'false'">{{item}}</li>
+            </ul>
+        </form>
+    </div>
+    <script>
+        angular.module("myapp", []).controller("ngForm", function ($scope) {
+            $scope.arrayName = ["Quan", "Van", "Loan", "Thu"]
+            $scope.stringName = "Nguyen Van Teo"
+        });
+    </script>
+</body>
+
+</html>
